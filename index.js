@@ -1,13 +1,11 @@
-// backend/index.js
-    const express = require('express');
-    const cors = require("cors");
-    const rootRouter = require("./routes/index");
+// backend/user/index.js
+const express = require('express');
+const userRouter = require("./user");
+const accountRouter = require("./account");
 
-    const app = express();
+const router = express.Router();
 
-    app.use(cors());
-    app.use(express.json());
+router.use("/user", userRouter);
+router.use("/account", accountRouter);
 
-    app.use("/api/v1", rootRouter);
-
-    app.listen(3000);
+module.exports = router;
